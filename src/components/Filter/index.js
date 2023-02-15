@@ -65,7 +65,7 @@ export default function Filter({ postDB, setPostDB }) {
 
   //Filter out the selected topic dropdown in postDB
   const handleTopic = async (selected) => {
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
     const data = await response.json();
     const payload = data.payload;
     const dropDownTopic = payload.filter((obj) => {
@@ -97,7 +97,7 @@ export default function Filter({ postDB, setPostDB }) {
 
   //Filters out the selected week dropdown in postDB
   const handleWeek = async (selected) => {
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
     const data = await response.json();
     const payload = data.payload;
     const dropDownWeek = payload.filter((obj) => {

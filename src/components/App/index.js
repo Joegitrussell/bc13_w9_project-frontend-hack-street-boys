@@ -24,7 +24,7 @@ function App() {
      */
 
     async function getPosts() {
-      const response = await fetch(`http://localhost:3001/api/posts`);
+      const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
       const data = await response.json();
       let sortedData = data.payload.sort((a, b) => {
         return b.week_number - a.week_number;
@@ -42,13 +42,13 @@ function App() {
    * @param {object} newObj
    */
   async function createPost(newObj) {
-    await fetch("http://localhost:3001/api/posts", {
+    await fetch("https://soc13-w9-backend.onrender.com/api/posts", {
       method: "POST",
       headers: { "content-type": "application/json" },
       mode: "cors",
       body: JSON.stringify(newObj),
     });
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
     const data = await response.json();
     let sortedData = data.payload.sort((a, b) => {
       return b.week_number - a.week_number;
@@ -83,10 +83,10 @@ function App() {
    * @param {number} id
    */
   async function deletePost(id) {
-    await fetch(`http://localhost:3001/api/posts/${id}`, {
+    await fetch(`https://soc13-w9-backend.onrender.com/api/posts/${id}`, {
       method: "DELETE",
     });
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
     const data = await response.json();
     let sortedData = data.payload.sort((a, b) => {
       return b.week_number - a.week_number;
@@ -117,13 +117,13 @@ function App() {
       week_number: week,
       topic: topic,
     };
-    await fetch(`http://localhost:3001/api/posts/${id}`, {
+    await fetch(`https://soc13-w9-backend.onrender.com/api/posts/${id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       mode: "cors",
       body: JSON.stringify(newObj),
     });
-    const response = await fetch(`http://localhost:3001/api/posts`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/posts`);
     const data = await response.json();
     let sortedData = data.payload.sort((a, b) => {
       return b.week_number - a.week_number;

@@ -25,7 +25,7 @@ function Display({ postDB, deletePost, editPost }) {
   async function checkComments(id) {
     for (let i = 0; i < commentDB.length; i++) {
       if (commentDB[i].post_id === id) {
-        await fetch(`http://localhost:3001/api/comments/${commentDB[i].id}`, {
+        await fetch(`https://soc13-w9-backend.onrender.com/api/comments/${commentDB[i].id}`, {
           method: "DELETE",
         });
       }
@@ -40,7 +40,7 @@ function Display({ postDB, deletePost, editPost }) {
      * - links the comments to posts
      */
     async function getComments() {
-      const response = await fetch(`http://localhost:3001/api/comments`);
+      const response = await fetch(`https://soc13-w9-backend.onrender.com/api/comments`);
       const data = await response.json();
       setCommentDB(data.payload);
     }
@@ -59,13 +59,13 @@ function Display({ postDB, deletePost, editPost }) {
       post_id: postId,
       comment: addComment,
     };
-    await fetch("http://localhost:3001/api/comments", {
+    await fetch("https://soc13-w9-backend.onrender.com/api/comments", {
       method: "POST",
       headers: { "content-type": "application/json" },
       mode: "cors",
       body: JSON.stringify(newObj),
     });
-    const response = await fetch(`http://localhost:3001/api/comments`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/comments`);
     const data = await response.json();
     setCommentDB(data.payload);
   }
@@ -76,10 +76,10 @@ function Display({ postDB, deletePost, editPost }) {
    * @param {number} id
    */
   async function deleteComment(id) {
-    await fetch(`http://localhost:3001/api/comments/${id}`, {
+    await fetch(`https://soc13-w9-backend.onrender.com/api/comments/${id}`, {
       method: "DELETE",
     });
-    const response = await fetch(`http://localhost:3001/api/comments`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/comments`);
     const data = await response.json();
     setCommentDB(data.payload);
   }
@@ -99,13 +99,13 @@ function Display({ postDB, deletePost, editPost }) {
       post_id: postId,
       comment: commentText,
     };
-    await fetch(`http://localhost:3001/api/comments/${commentId}`, {
+    await fetch(`https://soc13-w9-backend.onrender.com/api/comments/${commentId}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       mode: "cors",
       body: JSON.stringify(newObj),
     });
-    const response = await fetch(`http://localhost:3001/api/comments`);
+    const response = await fetch(`https://soc13-w9-backend.onrender.com/api/comments`);
     const data = await response.json();
     setCommentDB(data.payload);
   }
